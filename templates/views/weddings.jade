@@ -1,0 +1,19 @@
+extends ../layouts/default
+
+block head
+	script(src='js/lib/masonry.min.js')
+	script(src='js/lib/imagesloaded.min.js')
+
+
+block content
+	.container
+		h1.gallery-category-title Weddings
+		if galleries.length
+			each gallery in galleries
+				each cat, cat_i in gallery.categories
+					if cat.name == 'weddings'
+						#container
+								each image in gallery.images
+									img.item(src=image.limit(800, 800))
+		else
+			h3.text-muted There are no image galleries yet.
